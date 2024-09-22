@@ -4,17 +4,18 @@ import CreateProjectForm from "../Project/CreateProjectForm";
 // import {  } from "@radix-ui/react-dropdown-menu";
 import { PersonIcon } from "@radix-ui/react-icons";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+    const navigate = useNavigate();
   return (
-    <div className="border-b py-4 px-5 flex items-center justify-between">
+    <div className="border-b  py-4 px-5 flex items-center justify-between">
         <div className="flex items-center gap-3">
-            <p ><Link className="cursor-pointer navLogo" to="/">Unsplash</Link></p>
+            <p onClick={()=>navigate("/")} className="navLogo">Unsplash</p>
             <Dialog>
-                <DialogTrigger>
+                <DialogTrigger className="border-none">
                     
-                    <Button className="textCustom" variant="ghost">New Project</Button>
+                    <Button className="textCustom border-none" variant="ghost">New Project</Button>
                     
                     
                 </DialogTrigger>
@@ -25,12 +26,12 @@ export default function Navbar() {
                     </DialogHeader>
                 </DialogContent>
             </Dialog>
-            <Button className="textCustom ">Upgrade</Button>
+            <Button className="textCustom border-none">Upgrade</Button>
         </div>
         <div className="flex gap-3 items-center">
-            <DropdownMenu>
-                <DropdownMenuTrigger>
-                    <Button size="icon" className="rounded-full border-2 border-gray-500">
+            <DropdownMenu >
+                <DropdownMenuTrigger className="border-none">
+                    <Button size="icon" className="rounded-full border-2 border-gray-500 border-none">
                         <PersonIcon/>
                     </Button>
                 </DropdownMenuTrigger>

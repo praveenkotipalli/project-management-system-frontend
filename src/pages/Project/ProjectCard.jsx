@@ -22,8 +22,8 @@ export default function ProjectCard() {
                     </div>
                     <div>
                         <DropdownMenu>
-                            <DropdownMenuTrigger>
-                                <Button  variant="ghost" size="icon">
+                            <DropdownMenuTrigger className="border-none">
+                                <Button  variant="ghost" size="icon" className="border-none">
                                     <DotsVerticalIcon />
                                 </Button>
                             </DropdownMenuTrigger>

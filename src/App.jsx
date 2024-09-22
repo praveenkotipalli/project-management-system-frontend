@@ -12,7 +12,10 @@ function App() {
   return (
     <>
     <CustomCursor/>
-    <Navbar/>
+    <div style={{zIndex:"2"}} className=''>
+    <Navbar />
+    </div>
+    
       {/* <Home/> */}
       <Routes>
         <Route path="/" element={<Home/>}/>

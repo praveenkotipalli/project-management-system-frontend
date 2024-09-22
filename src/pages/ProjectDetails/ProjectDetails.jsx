@@ -17,9 +17,9 @@ export default function ProjectDetails() {
   return (
     <>
       <div className="mt-5 lg:px-10">
-        <div className="lg:flex gap-5 justify-between pb-4">
-          <ScrollArea className="h-screen lg:w-[69%] pr-2 ">
-            <div className=" pb-10 w-full pr-8 pl-8 "  style={{paddingRight:"8px", paddingLeft:"8px"}} >
+        <div className="lg:flex  gap-5 justify-between pb-4">
+          <ScrollArea className="h-screen  lg:w-[69%] pr-2 ">
+            <div className=" p w-full pr-8 pl-8 "  style={{paddingRight:"8px", paddingLeft:"8px"}} >
               <h1 className="text-lg font-smeibold pb-5">Create Ecommerce Website Using React</h1>
               <div className="space-y-5 pb-10 ">
               <p className="w-full  text-gray-400 text-sm">
@@ -79,7 +79,7 @@ export default function ProjectDetails() {
             </div>
             
           </ScrollArea>
-          <div>
+          <div className="lg:w-[30%] lg:h-[100%] rounded-md sticky right-5 top-12">
             <ChatBox/>
           </div>
         </div>

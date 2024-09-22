@@ -8,6 +8,7 @@
   margin-left: 25px;
   font-family: Tiny5;
   font-size: x-large;
+  cursor: pointer;
 }
 
 .spline-container{

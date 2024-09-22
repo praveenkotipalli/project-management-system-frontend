@@ -16,7 +16,7 @@ import ProjectCard from "../Project/ProjectCard";
 // import { Link } from "lucide-react";
 
 export const tags = [
-  "all", "react", "nextjs", "spring boot", "mysql", "nodejs", "express js", "python", "flask", "django", 
+  "All", "React", "Next js", "Spring boot", "MySql", "Node js", "Express js", "Python", "Flask", "Django", 
 ];
 
 export default function ProjectList() {
@@ -37,8 +37,8 @@ export default function ProjectList() {
       <section className="filterSection">
         <Card className="p-5 sticky top-10">
           <div className="flex justify-between lg:w-[20rem]">
-            <p className="text-xl -tracking-wider">filters</p>
-            <Button variant="ghost" size="icon">
+            <p className="text-xl -tracking-wider">Filters</p>
+            <Button variant="ghost" size="icon" className="border-none" >
               <MixerHorizontalIcon/>
             </Button> 
           </div>
@@ -52,7 +52,7 @@ export default function ProjectList() {
                   <RadioGroup  className="space-y-3 pt-5"defaultValue="all" onValueChange={(value)=>handleFilterChange("category", value)} >
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="all" id="r1" />
-                      <Label htmlFor="r1">all</Label>
+                      <Label htmlFor="r1">All</Label>
                     </div>
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="fullstack" id="r2" />
@@ -77,7 +77,7 @@ export default function ProjectList() {
                 <div className="pt-5">
                   <RadioGroup className="space-y-3 pt-5" defaultValue="all" onValueChange={(value)=>handleFilterChange("tag", value)} >
                     {tags.map((item) => <div key={item} className="flex items-center gap-2 ">
-                      <RadioGroupItem value={item} id={`r1-${item}`} />
+                      <RadioGroupItem  value={item} id={`r1-${item}`} />
                       <Label htmlFor={`r1-${item}`}>{item}</Label>
                     </div>)}
                   </RadioGroup>
