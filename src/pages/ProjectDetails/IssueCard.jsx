@@ -5,13 +5,15 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 // import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import { DotsVerticalIcon, PersonIcon } from "@radix-ui/react-icons";
 import UserList from "./UserList";
+import { useNavigate } from "react-router-dom";
 
 export default function IssueCard() {
+  const navigate = useNavigate();
   return (
     <Card className="rounded-md py-1 pb-2 mt-5 ">
       <CardHeader className="py-0 pb-1">
         <div className="flex justify-between items-center">
-          <CardTitle>
+          <CardTitle className="cursor-pointer" onClick={()=>navigate("issue/3")}>
             Create Navbar
           </CardTitle>
           <DropdownMenu className="border-none">

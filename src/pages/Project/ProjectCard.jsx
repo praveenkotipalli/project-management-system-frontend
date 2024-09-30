@@ -14,7 +14,7 @@ export default function ProjectCard() {
             <div className="space-y-2">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-5">
-                        <h1 onClick={()=>navigate("/project/3")} className="cursor-pointer font-bold text-lg">
+                        <h1 onClick={()=>navigate("/project/3")} className="cursor-pointer font-bold text-black text-lg">
                         Create Ecommerce Project
                         </h1>
                         <DotFilledIcon/>

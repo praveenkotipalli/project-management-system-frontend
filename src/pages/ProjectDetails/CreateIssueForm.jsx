@@ -15,10 +15,10 @@ const onSubmit = (data) =>{
     console.log("issue details", data);
 }
   return (
-    <div>
+    <div >
       
-      <Form {...form } >
-            <form className="" onSubmit={form.handleSubmit(onSubmit)}>
+      <Form  {...form } >
+            <form   onSubmit={form.handleSubmit(onSubmit)} >
                 <FormField control={form.control}
                 name="issueName"
                 // description="description"

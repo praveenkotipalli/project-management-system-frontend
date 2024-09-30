@@ -10,7 +10,7 @@ import {  GitHubLogoIcon, InstagramLogoIcon, LinkedInLogoIcon, MagnifyingGlassIc
 import {  Link } from "lucide-react";
 import { useState } from "react";
 import ProjectCard from "../Project/ProjectCard";
-// import SplineRocket from "@/custom/SplineRocket";
+import SplineRocket from "../custom/SplineRocket.jsx"
 // import { relative } from "path";
 // import { Link } from "lucide-react";
 // import { Link } from "lucide-react";
@@ -33,7 +33,7 @@ export default function ProjectList() {
   }
   return (
     <>
-    <div className='relative px-5 lg:px-0 justify-center lg:flex gap-5 py-5' style={{justifyContent:"center",textAlign:"center",alignContent:"center",alignItems:"", margin:"0px 10px"}}>
+    <div className='particle relative px-5 lg:px-0 justify-center lg:flex gap-5 py-5' style={{justifyContent:"center",textAlign:"center",alignContent:"center",alignItems:"", margin:"0px 10px"}}>
       <section className="filterSection">
         <Card className="p-5 sticky top-10">
           <div className="flex justify-between lg:w-[20rem]">
@@ -89,12 +89,14 @@ export default function ProjectList() {
       </section>
 
       <section className="projectListSection w-full lg:w-[48rem]" style={{position:"relative"}} >
+        <ScrollArea  className="space-y h-[88vh]">
         <div className="flex gap-2 items-center pb-5 justify-between">
-          <div className="relative p-0 w-full">
+          <div className="relative p-0 w-full mainSearch">
             <Input 
+            
               onChange={handleSearchChange}
               placeholder="search project"
-              className="40% px-9"
+              className="40% px-9 "
             />
             <MagnifyingGlassIcon className="absolute top-3 left-4" />
           </div>
@@ -105,11 +107,12 @@ export default function ProjectList() {
               {
                  
                   keyword?[1,1,1].map((item)=><ProjectCard key={item}/>):
-                  [1,1,1,1].map((item)=><ProjectCard key={item}/>)
+                  [1,1,1,1,1,1,1].map((item)=><ProjectCard key={item}/>)
                 
               }
           </div>
         </div>
+        </ScrollArea>
       </section>
 
       <section >
@@ -129,7 +132,7 @@ export default function ProjectList() {
           </div>
         </Card>
         <div style={{position:"fixed"}} className="">
-          {/* <SplineRocket/> */}
+          <SplineRocket/>
         </div>
       </section>
     </div>

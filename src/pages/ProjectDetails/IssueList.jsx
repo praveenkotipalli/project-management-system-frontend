@@ -9,12 +9,12 @@ export default function IssueList({title, status}) {
   return (
     <div>
       <Dialog>
-        <Card className="w-full md:w-[300px] lg:w-[310px]">
+        <Card className="w-full md:w-[300px] lg:w-[310px] mb-12">
           <CardHeader>
             <CardTitle>
               {title}
             </CardTitle>
-            <CardContent className="px-2">
+            <CardContent className="px-2 ">
               <div className="space-y-2">
                 {
                   [1,1].map((item)=><IssueCard key={item}/>)
@@ -29,7 +29,7 @@ export default function IssueList({title, status}) {
             </CardFooter>
           </CardHeader>
         </Card>
-        <DialogContent>
+        <DialogContent style={{backgroundColor:"#171717f4"}}>
           <DialogHeader>
             <DialogTitle>Create New Issue</DialogTitle>
           </DialogHeader>

@@ -4,17 +4,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tiny5&family=Unbounded:wght@200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
+
+.navbar {
+  background: rgba(255, 255, 255, 0.177); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.2); /* Light border for definition */
+  padding: 1rem 2rem; /* Adjust padding as needed */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.navbar:hover {
+  background: hsla(0, 0%, 100%, 0.242); /* Darker on hover for effect */
+}
+
+.dialogContent {
+  background-color: rgba(23, 23, 23, 0.9); /* Semi-transparent background for dialog */
+  backdrop-filter: blur(10px); /* Blur effect for dialog */
+}
+
 .navLogo{
   margin-left: 25px;
   font-family: Tiny5;
   font-size: x-large;
   cursor: pointer;
+  /* color: #171717f4; */
 }
 
-.spline-container{
+.spline-container {
+  /* position: fixed; */
   width: 100vw;
   height: 100vh;
-  z-index: 2;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Make sure it's behind the custom cursor */
 }
 .tasksFont{
   font-family: Unbounded;
@@ -31,7 +59,7 @@
 .cursor-dot {
   width: 12px;  /* Width */
   height: 12px; /* Height */
-  background-color: #FF520E; /* Accent color */
+  background-color: none; /* Accent color */
   border-radius: 40px; /* Radius */
   position: fixed;
   pointer-events: none;
@@ -44,24 +72,18 @@
 
 
 .navLogo:hover{
-  color: rgb(255, 128, 0);
-}
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: none;
+  color: #e3e3e3;
 }
 
+.navBarBorder{
+  border: 1px solid gray;
+}
 
+.mainSearch{
+  border: 1px solid gray;
+  /* border-radius: 10%; */
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -75,20 +97,72 @@ p, .textCustom{
   font-family: Poppins;
 }
 
+
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(180deg, #000000 20%, #f672073c 80%);
-
-  /* background: linear-gradient(180deg, #0000FF 0%, #00BFFF 100%); */
-
-  /* background-color: #313030; */
-  /* background: linear-gradient(300deg, rgba(255, 94, 0, 0.274), rgba(0, 0, 0, 0.9)); */
-  /* background: linear-gradient( to top right, rgba(0, 0, 0, 1) 50%, rgba(255, 94, 0, 0.8) 90%); */
+  background-color: #141414;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Black Border and Gradient Blur Background with Fluid Motion */
+body::before {
+  content: '';
+  position: absolute;
+  top: 10px; /* Offset by 10px */
+  left: 10px; /* Offset by 10px */
+  right: 10px; /* Offset by 10px */
+  bottom: 10px; /* Offset by 10px */
+  background: linear-gradient(135deg, #366585, #2a3f4d, #112f38, #000000, #4d3658, #366585);
+  filter: blur(80px);
+  z-index: -2;
+  animation: fluidBackground 15s ease-in-out infinite; /* Reduced from 30s to 15s for faster motion */
+  background-size: 200% 200%; /* Increase size to allow the fluid movement */
+}
+
+/* Animate background to move in fluid-like motion */
+@keyframes fluidBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Noise Effect Layer */
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, transparent 2%),
+              radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, transparent 2%);
+  background-size: 60px 60px;
+  opacity: 0.075;
+  z-index: -3;
+
+  /* Noise Layer */
+  background-image: url('https://www.transparenttextures.com/patterns/noise.png'); /* Add noise texture */
+  opacity: 0.08; /* Adjust opacity for noise */
+  pointer-events: none;
+}
+
+/* Optional: Set body background color for contrast */
+body {
+  background-color: #000; /* Set a dark background for the body */
+}
+
+
 
 h1 {
   font-family:  Unbounded ;
@@ -124,9 +198,10 @@ button:focus-visible {
     color: #747bff;
   }
   button {
+    color: #c5c4c46c;
     background-color: #fafafa;
-    /* color: hsl(0, 0%, 10%) */
-    /* color: hsla(0, 0%, 0%, 0.237); */
+    /* color: hsla(0, 0%, 38%, 0.61) */
+    /* color: rgba(92, 92, 92, 0.271); */
   }
 }
 
@@ -140,24 +215,24 @@ button:focus-visible {
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
+    --foreground: 240 10% 3.9%;
+    --card: 0, 0%, 100%, 0.2;
+    --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
-    --primary: 24.6 95% 53.1%;
-    --primary-foreground: 60 9.1% 97.8%;
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 24.6 95% 53.1%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -167,25 +242,25 @@ button:focus-visible {
   }
 
   .dark {
-    --background: 0 0% 10%;
-    --foreground: 60 9.1% 97.8%;
-    --card: 0, 0%, 0%, 0.296;
-    --card-foreground: 60 9.1% 97.8%;
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 60 9.1% 97.8%;
-    --primary: 20.5 90.2% 48.2%;
-    --primary-foreground: 60 9.1% 97.8%;
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
-    --muted: 12 6.5% 15.1%;
-    --muted-foreground: 24 5.4% 63.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 60 9.1% 97.8%;
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 12 6.5% 15.1%;
-    --input: 12 6.5% 15.1%;
-    --ring: 20.5 90.2% 48.2%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -195,11 +270,19 @@ button:focus-visible {
 }
 
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background dark text-foreground;
-  }
+.form-item {
+  text-align: right;
+  /* border: 1px solid green; */
+}
+.authBody{
+  display: grid;
+  place-items: center;
+  background: white;
+  overflow: hidden;
+}
+
+.authBody.show-password{
+  --bgColor: black;
+  --inputColor: white;
+  --outlineColor: var(--beamColor);
 }

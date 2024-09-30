@@ -8,6 +8,7 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import InviteUserForm from "./InviteUserForm";
 import IssueList from "./IssueList";
 import ChatBox from "./ChatBox";
+import Navbar from "../Navbar/Navbar";
 
 export default function ProjectDetails() {
 
@@ -16,9 +17,11 @@ export default function ProjectDetails() {
   }
   return (
     <>
+    
+    <Navbar/>
       <div className="mt-5 lg:px-10">
         <div className="lg:flex  gap-5 justify-between pb-4">
-          <ScrollArea className="h-screen  lg:w-[69%] pr-2 ">
+          <ScrollArea className="h-[89vh]  lg:w-[69%] pr-2 ">
             <div className=" p w-full pr-8 pl-8 "  style={{paddingRight:"8px", paddingLeft:"8px"}} >
               <h1 className="text-lg font-smeibold pb-5">Create Ecommerce Website Using React</h1>
               <div className="space-y-5 pb-10 ">
@@ -48,7 +51,7 @@ export default function ProjectDetails() {
                       <PlusIcon  className="w-3 h-3 ml-3"/>
                     </Button>
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent style={{backgroundColor:"#171717f4"}}>
                     <DialogHeader>
                       <DialogTitle>Invite user</DialogTitle>
                       <InviteUserForm/>
@@ -70,7 +73,7 @@ export default function ProjectDetails() {
 
             <section>
               <p className="tasksFont py-5 border-b text-lg -tracking-wider ">Tasks</p>
-              <div className="lg:flex md:flex gap-3 justify-between py-5">
+              <div className="lg:flex md:flex gap-3 justify-between py-5  ">
                 <IssueList status="pending" title="Todo List"/>
                 <IssueList status="in_progress" title="In progress"/>
                 <IssueList status="done" title="Done"/>
