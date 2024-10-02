@@ -16,9 +16,9 @@ export default function Navbar() {
                     <DialogTrigger className="border-none">
                         <Button className="textCustom target-container border-none" variant="ghost">New Project</Button>
                     </DialogTrigger>
-                    <DialogContent style={{backgroundColor:"#c5c4c46c"}} className="dialogContent">
+                    <DialogContent style={{backgroundColor:"#3c3c3c63", border:"none"}} className="dialogContent">
                         <DialogHeader>
-                            <DialogTitle>Create New Project</DialogTitle>
+                            <DialogTitle style={{color:"#e3e3e3"}}>Create New Project</DialogTitle>
                             <CreateProjectForm />
                         </DialogHeader>
                     </DialogContent>

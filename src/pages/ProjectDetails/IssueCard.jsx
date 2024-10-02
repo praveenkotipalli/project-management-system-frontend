@@ -39,7 +39,7 @@ export default function IssueCard() {
             <Button size="icon" variant="ghost" className="border-none bg-gray-900 hover:text-black text-white rounded-full">
               <Avatar className="border-none">
                 <AvatarFallback className="border-none">
-                  <PersonIcon className="border-none"/>
+                  <PersonIcon style={{color:"#000"}} className="border-none"/>
                 </AvatarFallback>
               </Avatar>
             </Button>

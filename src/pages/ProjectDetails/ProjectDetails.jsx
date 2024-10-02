@@ -23,7 +23,7 @@ export default function ProjectDetails() {
         <div className="lg:flex  gap-5 justify-between pb-4">
           <ScrollArea className="h-[89vh]  lg:w-[69%] pr-2 ">
             <div className=" p w-full pr-8 pl-8 "  style={{paddingRight:"8px", paddingLeft:"8px"}} >
-              <h1 className="text-lg font-smeibold pb-5">Create Ecommerce Website Using React</h1>
+              <h1 className="text-lg font-smeibold pb-5" style={{color:"#e3e3e3"}}>Create Ecommerce Website Using React</h1>
               <div className="space-y-5 pb-10 ">
               <p className="w-full  text-gray-400 text-sm">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -31,13 +31,13 @@ export default function ProjectDetails() {
                 sint architecto, officia eveniet consequatur aliquam, illum officiis! Tenetur, 
                 exercitationem tempora.
               </p>
-              <div className="flex">
+              <div style={{color:"#e3e3e3"}} className="flex">
                 <p className="w-36">Project Lead :</p>
                 <p>Praveen</p>
 
               </div>
-              <div className="flex">
-                <p className="w-36">Members :</p>
+              <div  className="flex">
+                <p style={{color:"#e3e3e3"}} className="w-36">Members :</p>
                 <div className="flex items-center gap-2">
                   {[1, 1].map((item)=> <Avatar key={item} className="cursor-pointer">
                   <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -53,26 +53,26 @@ export default function ProjectDetails() {
                   </DialogTrigger>
                   <DialogContent style={{backgroundColor:"#171717f4"}}>
                     <DialogHeader>
-                      <DialogTitle>Invite user</DialogTitle>
+                      <DialogTitle style={{color:"#e3e3e3"}}>Invite user</DialogTitle>
                       <InviteUserForm/>
                     </DialogHeader>
                   </DialogContent>
                 </Dialog>
               </div>
-              <div className="flex">
+              <div style={{color:"#e3e3e3"}} className="flex">
                 <p className="w-36">Category :</p>
                 <p>Fullstack</p>
 
               </div>
               <div className="flex">
-                <p className="w-36">Status :</p>
+                <p style={{color:"#e3e3e3"}} className="w-36">Status :</p>
                 <Badge style={{background:"gray"}}><p>Pending</p></Badge>
 
               </div>
             </div>
 
             <section>
-              <p className="tasksFont py-5 border-b text-lg -tracking-wider ">Tasks</p>
+              <p style={{color:"#e3e3e3"}} className="tasksFont py-5 border-b text-lg -tracking-wider ">Tasks</p>
               <div className="lg:flex md:flex gap-3 justify-between py-5  ">
                 <IssueList status="pending" title="Todo List"/>
                 <IssueList status="in_progress" title="In progress"/>

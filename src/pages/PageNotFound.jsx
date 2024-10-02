@@ -8,8 +8,8 @@ export default function PageNotFound() {
    {/* mt-6 fixed top-0 left-0 flex m-0 p-0 */}
    {/* h-full w-full flex top-0 left-0 m-0 p-0 absloute */}
    <div className='spline-container'>
-        {/* <Spline scene='https://prod.spline.design/TDKocLKUFlzpRqlg/scene.splinecode'/> */}
-        <Spline scene="/scene2.splinecode" />
+        <Spline scene='https://prod.spline.design/Mqd7F5Kuw1haeGMr/scene.splinecode'/>
+        {/* <Spline scene="/scene2.splinecode" /> */}
     </div></>
     
   );

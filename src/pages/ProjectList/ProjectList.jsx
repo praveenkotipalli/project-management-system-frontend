@@ -37,22 +37,22 @@ export default function ProjectList() {
       <section className="filterSection">
         <Card className="p-5 sticky top-10">
           <div className="flex justify-between lg:w-[20rem]">
-            <p className="text-xl -tracking-wider">Filters</p>
+            <p className="text-xl -tracking-wider" style={{color:"#e3e3e3"}}>Filters</p>
             <Button variant="ghost" size="icon" className="border-none" >
-              <MixerHorizontalIcon/>
+              <MixerHorizontalIcon style={{color:"#e3e3e3"}}/>
             </Button> 
           </div>
           <CardContent className="mt-5">
             <ScrollArea className="space-y-7 h-[70vh]">
               <div>
-                <h1 className="pb-3 text-gray-400 border-b">
+                <h1 className="pb-3 text-gray-300 border-b">
                   Category
                 </h1>
                 <div className="pt-5">
                   <RadioGroup  className="space-y-3 pt-5"defaultValue="all" onValueChange={(value)=>handleFilterChange("category", value)} >
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="all" id="r1" />
-                      <Label htmlFor="r1">All</Label>
+                      <Label htmlFor="r1" style={{color:"#000"}}>All</Label>
                     </div>
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="fullstack" id="r2" />
@@ -71,7 +71,7 @@ export default function ProjectList() {
               </div>
 
               <div className="pt-9">
-                <h1 className="pb-3 text-gray-400 border-b">
+                <h1 className="pb-3 text-gray-300 border-b">
                   Tags
                 </h1>
                 <div className="pt-5">
@@ -118,11 +118,11 @@ export default function ProjectList() {
       <section >
       <Card className="p-3 sticky top-10">
           <div className="flex justify-between lg:w-[19rem]">
-            <p className="text-xl -tracking-wider" style={{marginBottom:"20px"}}>Connect with us !</p>
+            <p className="text-xl -tracking-wider" style={{marginBottom:"20px", color:"#e3e3e3"}}>Connect with us !</p>
             {/* <Button variant="ghost" size="icon">
               <MixerHorizontalIcon/>
             </Button>  */}
-            <Link style={{width:"15px", height:"15px",marginTop:"10px"}}/>
+            <Link style={{width:"15px",color:"#e3e3e3", height:"15px",marginTop:"10px"}}/>
           </div>
           <div  className="flex justify-between lg:w-[19rem]" style={{marginTop:"35px", marginBottom:"12px"}}>
               <a href="https://www.linkedin.com/in/praveen-kumar-kotipalli-5b0ba528a/"><LinkedInLogoIcon/></a>

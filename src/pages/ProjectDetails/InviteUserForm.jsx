@@ -28,7 +28,7 @@ export default function InviteUserForm() {
 
                 render={({field})=>
                 <FormItem>
-                    <FormLabel ><p style={{textAlign:"right"}}> Email</p></FormLabel>
+                    <FormLabel ><p style={{textAlign:"right", color:"e3e33"}}> Email</p></FormLabel>
                     <FormControl>
                         <Input {...field} type="email" className="border w-full border-gray-700 py-5 px-5" placeholer="Project name...."/>
                     </FormControl>
