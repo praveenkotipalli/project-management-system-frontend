@@ -9,16 +9,16 @@ import { useNavigate } from "react-router-dom";
 export default function ProjectCard() {
     const navigate = useNavigate();
   return (
-    <Card className="p-5 w-full lg:max-w-3xl">
+    <Card className="customCard p-5 w-full lg:max-w-3xl">
         <div className="space-y-5">
             <div className="space-y-2">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-5">
-                        <h1 onClick={()=>navigate("/project/3")} className="cursor-pointer font-bold text-black text-lg">
+                        <h1 onClick={()=>navigate("/project/3")} className="cursor-pointer font-bold text-black customTextColor text-lg">
                         Create Ecommerce Project
                         </h1>
                         <DotFilledIcon/>
-                        <p className="text-sm text-gray-400">Fullstack</p>
+                        <p className="text-sm text-gray-400" style={{color:"gray"}}>Fullstack</p>
                     </div>
                     <div>
                         <DropdownMenu>
@@ -38,7 +38,7 @@ export default function ProjectCard() {
                         </DropdownMenu>
                     </div>
                 </div>
-                <p className="flex  text-gray-500 text-sm" style={{textAlign:"left"}}>
+                <p className="flex  text-gray-500 text-sm" style={{textAlign:"left", color:"#797A76"}}>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad corporis, ex quae ullam provident maiores officia recusandae non hic sapiente libero, temporibus at consequuntur dolor vitae accusamus velit expedita voluptatibus!
                 </p>
@@ -46,7 +46,7 @@ export default function ProjectCard() {
             
             <div className="flex flex-wrap gap-2 items-center">
                 
-                {[1, 1, 1, 1].map((item)=><Badge key={item}>{"frontend"}</Badge>)}
+                {[1, 1, 1, 1].map((item)=><Badge key={item} style={{ color:"#854DFC"}}>{"frontend"}</Badge>)}
                 {/* <Badge>Angular</Badge>
                 <Badge>Spring boot</Badge>
                 <Badge>MySql</Badge> */}

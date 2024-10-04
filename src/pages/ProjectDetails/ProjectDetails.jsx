@@ -9,6 +9,7 @@ import InviteUserForm from "./InviteUserForm";
 import IssueList from "./IssueList";
 import ChatBox from "./ChatBox";
 import Navbar from "../Navbar/Navbar";
+import Particles from "@/components/ui/particles";
 
 export default function ProjectDetails() {
 
@@ -20,24 +21,31 @@ export default function ProjectDetails() {
     
     <Navbar/>
       <div className="mt-5 lg:px-10">
+      <Particles
+        className="absolute inset-0 z-[-1]"
+        quantity={100}
+        ease={80}
+        
+        refresh
+      />
         <div className="lg:flex  gap-5 justify-between pb-4">
           <ScrollArea className="h-[89vh]  lg:w-[69%] pr-2 ">
             <div className=" p w-full pr-8 pl-8 "  style={{paddingRight:"8px", paddingLeft:"8px"}} >
-              <h1 className="text-lg font-smeibold pb-5" style={{color:"#e3e3e3"}}>Create Ecommerce Website Using React</h1>
+              <h1 className="text-lg font-bold pb-5 pt-3 customTextColor  "  >Create Ecommerce Website Using React</h1>
               <div className="space-y-5 pb-10 ">
-              <p className="w-full  text-gray-400 text-sm">
+              <p className="w-full  text-gray-400 text-sm" style={{color:"#797A76"}}>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Consectetur modi expedita eligendi voluptatem libero dolores odio omnis saepe aut, 
                 sint architecto, officia eveniet consequatur aliquam, illum officiis! Tenetur, 
                 exercitationem tempora.
               </p>
               <div style={{color:"#e3e3e3"}} className="flex">
-                <p className="w-36">Project Lead :</p>
-                <p>Praveen</p>
+                <p className="w-36" style={{color:"#854DFC"}}>Project Lead :</p>
+                <p className="customTextColor">Praveen</p>
 
               </div>
               <div  className="flex">
-                <p style={{color:"#e3e3e3"}} className="w-36">Members :</p>
+                <p style={{color:"#854DFC"}} className="w-36">Members :</p>
                 <div className="flex items-center gap-2">
                   {[1, 1].map((item)=> <Avatar key={item} className="cursor-pointer">
                   <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -46,26 +54,26 @@ export default function ProjectDetails() {
                 </div>
                 <Dialog>
                   <DialogTrigger style={{marginLeft:"35px"}}>
-                    <Button size="sm"  variant="outline" onClick={handleProjectInvitation} >
-                      <span>Invite</span>
+                    <Button className="inviteButton" size="sm"  variant="outline" onClick={handleProjectInvitation} >
+                      <span >Invite</span>
                       <PlusIcon  className="w-3 h-3 ml-3"/>
                     </Button>
                   </DialogTrigger>
                   <DialogContent style={{backgroundColor:"#171717f4"}}>
                     <DialogHeader>
-                      <DialogTitle style={{color:"#e3e3e3"}}>Invite user</DialogTitle>
+                      <DialogTitle className=" customTextColor" >Invite user</DialogTitle>
                       <InviteUserForm/>
                     </DialogHeader>
                   </DialogContent>
                 </Dialog>
               </div>
               <div style={{color:"#e3e3e3"}} className="flex">
-                <p className="w-36">Category :</p>
-                <p>Fullstack</p>
+                <p className="w-36" style={{color:"#854DFC"}}>Category :</p>
+                <p className="customTextColor">Fullstack</p>
 
               </div>
               <div className="flex">
-                <p style={{color:"#e3e3e3"}} className="w-36">Status :</p>
+                <p style={{color:"#854DFC"}} className="w-36">Status :</p>
                 <Badge style={{background:"gray"}}><p>Pending</p></Badge>
 
               </div>
@@ -82,7 +90,7 @@ export default function ProjectDetails() {
             </div>
             
           </ScrollArea>
-          <div className="lg:w-[30%] lg:h-[100%] rounded-md sticky right-5 top-12">
+          <div className="lg:w-[30%] lg:h-[100%] rounded-md sticky right-5 top-12 mb-10">
             <ChatBox/>
           </div>
         </div>

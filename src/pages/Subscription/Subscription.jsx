@@ -1,3 +1,4 @@
+import Spline from "@splinetool/react-spline";
 import Navbar from "../Navbar/Navbar";
 
 const paidPlan = [
@@ -35,13 +36,12 @@ const freePlan = [
 export default function Subscription() {
   return (
     <>
+    
         <Navbar/>
-        <div className="p-10">
-          <h1 className="text-5xl font-semibold py-5 pb-16 text-center">Pricing</h1>
-          <div className="flex flex-col lg:flex-row justify-center items-center">
-            
-          </div>
-        </div>
+        <div className='upgrade-container' style={{}}>
+        <Spline scene='/upgradecard3.splinecode'/>
+        {/* <Spline scene="/scene2.splinecode" /> */}
+    </div>
     </>
   );
 }

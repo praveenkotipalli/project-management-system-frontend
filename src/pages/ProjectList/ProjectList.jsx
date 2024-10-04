@@ -11,6 +11,9 @@ import {  Link } from "lucide-react";
 import { useState } from "react";
 import ProjectCard from "../Project/ProjectCard";
 import SplineRocket from "../custom/SplineRocket.jsx"
+// import Globe from "@/components/ui/globe";
+import { GlobeDemo } from "../custom/GlobeDemo";
+import Particles from "@/components/ui/particles";
 // import { relative } from "path";
 // import { Link } from "lucide-react";
 // import { Link } from "lucide-react";
@@ -34,8 +37,15 @@ export default function ProjectList() {
   return (
     <>
     <div className='particle relative px-5 lg:px-0 justify-center lg:flex gap-5 py-5' style={{justifyContent:"center",textAlign:"center",alignContent:"center",alignItems:"", margin:"0px 10px"}}>
-      <section className="filterSection">
-        <Card className="p-5 sticky top-10">
+    <Particles
+        className="absolute inset-0 z-[-1]"
+        quantity={100}
+        ease={80}
+        
+        refresh
+      />
+      <section className="filterSection" >
+        <Card className="customCard p-5 sticky top-10" style={{border:""}}>
           <div className="flex justify-between lg:w-[20rem]">
             <p className="text-xl -tracking-wider" style={{color:"#e3e3e3"}}>Filters</p>
             <Button variant="ghost" size="icon" className="border-none" >
@@ -48,23 +58,23 @@ export default function ProjectList() {
                 <h1 className="pb-3 text-gray-300 border-b">
                   Category
                 </h1>
-                <div className="pt-5">
+                <div className="pt-5"  >
                   <RadioGroup  className="space-y-3 pt-5"defaultValue="all" onValueChange={(value)=>handleFilterChange("category", value)} >
                     <div className="flex items-center gap-2">
-                      <RadioGroupItem value="all" id="r1" />
-                      <Label htmlFor="r1" style={{color:"#000"}}>All</Label>
+                      <RadioGroupItem value="all" id="r1" style={{border:"1px solid #854DFC", color:"#854DFC"}} />
+                      <Label htmlFor="r1" style={{color:"#854DFC"}} >All</Label>
                     </div>
                     <div className="flex items-center gap-2">
-                      <RadioGroupItem value="fullstack" id="r2" />
-                      <Label htmlFor="r2">Fullstack</Label>
+                      <RadioGroupItem value="fullstack" id="r2" style={{border:"1px solid #854DFC", color:"#854DFC"}} />
+                      <Label htmlFor="r2" style={{color:"#854DFC"}}>Fullstack</Label>
                     </div>
                     <div className="flex items-center gap-2">
-                      <RadioGroupItem value="frontend" id="r3" />
-                      <Label htmlFor="r3">Frontend</Label>
+                      <RadioGroupItem value="frontend" id="r3" style={{border:"1px solid #854DFC", color:"#854DFC"}} />
+                      <Label htmlFor="r3" style={{color:"#854DFC"}}>Frontend</Label>
                     </div>
                     <div className="flex items-center gap-2">
-                      <RadioGroupItem value="backend" id="r4" />
-                      <Label htmlFor="r4">Backend</Label>
+                      <RadioGroupItem value="backend" id="r4" style={{border:"1px solid #854DFC", color:"#854DFC"}} />
+                      <Label htmlFor="r4" style={{color:"#854DFC"}}>Backend</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -76,9 +86,9 @@ export default function ProjectList() {
                 </h1>
                 <div className="pt-5">
                   <RadioGroup className="space-y-3 pt-5" defaultValue="all" onValueChange={(value)=>handleFilterChange("tag", value)} >
-                    {tags.map((item) => <div key={item} className="flex items-center gap-2 ">
-                      <RadioGroupItem  value={item} id={`r1-${item}`} />
-                      <Label htmlFor={`r1-${item}`}>{item}</Label>
+                    {tags.map((item) => <div key={item} className="flex items-center gap-2 " >
+                      <RadioGroupItem  value={item} id={`r1-${item}`} style={{border:"1px solid #854DFC", color:"#854DFC"}} />
+                      <Label htmlFor={`r1-${item}`} style={{ color:"#854DFC"}} >{item}</Label>
                     </div>)}
                   </RadioGroup>
                 </div>
@@ -88,17 +98,17 @@ export default function ProjectList() {
         </Card>
       </section>
 
-      <section className="projectListSection w-full lg:w-[48rem]" style={{position:"relative"}} >
+      <section className=" projectListSection w-full lg:w-[48rem]" style={{position:"relative"}} >
         <ScrollArea  className="space-y h-[88vh]">
         <div className="flex gap-2 items-center pb-5 justify-between">
-          <div className="relative p-0 w-full mainSearch">
+          <div className="relative p-0 w-full mainSearch" style={{border:"1px solid #454545", boxShadow:"3px 3px 10px #454545"}}>
             <Input 
             
               onChange={handleSearchChange}
               placeholder="search project"
-              className="40% px-9 "
+              className="40% px-9 border-none"
             />
-            <MagnifyingGlassIcon className="absolute top-3 left-4" />
+            <MagnifyingGlassIcon className="absolute top-3 left-4" style={{color:"#e3e3e3"}} />
           </div>
 
         </div>
@@ -116,18 +126,21 @@ export default function ProjectList() {
       </section>
 
       <section >
-      <Card className="p-3 sticky top-10">
+      <Card className="customCard p-3 sticky top-10" style={{zIndex:"2"}}>
           <div className="flex justify-between lg:w-[19rem]">
-            <p className="text-xl -tracking-wider" style={{marginBottom:"20px", color:"#e3e3e3"}}>Connect with us !</p>
+            <p className="text-xl -tracking-wider" style={{ color:"#e3e3e3"}}>
+               Connect with us !</p>
             {/* <Button variant="ghost" size="icon">
               <MixerHorizontalIcon/>
             </Button>  */}
-            <Link style={{width:"15px",color:"#e3e3e3", height:"15px",marginTop:"10px"}}/>
+            <Link style={{width:"15px",color:"#e3e3e3", height:"15px",marginTop:"8.5px"}}/>
           </div>
-          <div  className="flex justify-between lg:w-[19rem]" style={{marginTop:"35px", marginBottom:"12px"}}>
-              <a href="https://www.linkedin.com/in/praveen-kumar-kotipalli-5b0ba528a/"><LinkedInLogoIcon/></a>
+          <div  className="flex justify-between lg:w-[19rem]" style={{ marginBottom:"12px"}}>
+
+            <GlobeDemo/>
+              {/* <a href="https://www.linkedin.com/in/praveen-kumar-kotipalli-5b0ba528a/"><LinkedInLogoIcon/></a>
               <a href="https://github.com/praveenkotipalli"><GitHubLogoIcon className="gitHubLogo"/></a>
-              <a href="https://www.instagram.com/pr4veennn/"><InstagramLogoIcon className="instaLogo"/></a>
+              <a href="https://www.instagram.com/pr4veennn/"><InstagramLogoIcon className="instaLogo"/></a> */}
               {/* <a></a> */}
           </div>
         </Card>

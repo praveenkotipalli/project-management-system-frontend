@@ -52,11 +52,11 @@ export default function CreateProjectForm() {
 
                 render={({field})=>
                 <FormItem>
-                    <FormLabel ><p style={{textAlign:"right", color:"#e3e3e3"}}>Project title</p></FormLabel>
+                    <FormLabel ><p style={{textAlign:"right", color:"gray"}}>Project title</p></FormLabel>
                     <FormControl>
-                        <Input {...field} type="text" className="border w-full border-gray-700 py-5 px-5" placeholer="Project name...."/>
+                        <Input {...field} type="text" style={{color:"#e3e3e3"}} className="border w-full border-gray-700 py-5 px-5" placeholer="Project name...."/>
                     </FormControl>
-                    <FormDescription style={{ color:"#e3e3e3"}}>
+                    <FormDescription className="text-gray-500">
                         This is your project display name !
                     </FormDescription>
                     <FormMessage/>
@@ -68,11 +68,11 @@ export default function CreateProjectForm() {
 
                 render={({field})=>
                 <FormItem>
-                    <FormLabel ><p style={{textAlign:"right" , color:"#e3e3e3"}}>Project description</p></FormLabel>
+                    <FormLabel ><p style={{textAlign:"right" , color:"gray"}}>Project description</p></FormLabel>
                     <FormControl>
                         <Input {...field} type="text" className="border w-full border-gray-700 py-5 px-5" placeholer="Project name...."/>
                     </FormControl>
-                    <FormDescription style={{ color:"#e3e3e3"}}>
+                    <FormDescription className="text-gray-500">
                         This is your project description !
                     </FormDescription>
                     <FormMessage/>
@@ -84,19 +84,20 @@ export default function CreateProjectForm() {
 
                 render={({field})=>
                 <FormItem>
-                    <FormLabel ><p style={{textAlign:"right" , color:"#e3e3e3"}}>Project title</p></FormLabel>
-                    <FormControl>
+                    <FormLabel ><p style={{textAlign:"right" , color:"gray"}}>Category</p></FormLabel>
+                    <FormControl  style={{color:"#797A76"}}>
                         <Select 
+                        
                          defaultValue="fullstack"
                          value={field.value}
                          onValueChange={(value)=>{
                             field.onChange(value)
                          }}>
                             <SelectTrigger style={{borderBlockColor:"#636363",color:"#e3e3e3"}} className="w-full">
-                                <SelectValue  placeholder="Category"></SelectValue>
+                                <SelectValue   placeholder="Category"></SelectValue>
                             </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="fullstack">Full stack</SelectItem>
+                            <SelectContent> 
+                                <SelectItem value="fullstack" >Full stack</SelectItem>
                                 <SelectItem value="frontend">Frontend</SelectItem>
                                 <SelectItem value="backend">Backend</SelectItem>
                             </SelectContent>
@@ -115,7 +116,7 @@ export default function CreateProjectForm() {
 
                 render={({field})=>
                 <FormItem>
-                    <FormLabel ><p style={{textAlign:"right", marginTop:"20px", color:"#e3e3e3"}}>Tags</p></FormLabel>
+                    <FormLabel ><p style={{textAlign:"right", marginTop:"20px", color:"gray"}}>Tags</p></FormLabel>
                     <FormControl>
                         <Select 
                         
@@ -124,11 +125,11 @@ export default function CreateProjectForm() {
                          onValueChange={(value)=>{
                             handleTagsChange(value);
                          }}>
-                            <SelectTrigger style={{borderBlockColor:"#636363",color:"#e3e3e3"}} className="w-full">
+                            <SelectTrigger style={{borderBlockColor:"#636363",color:""}} className="w-full">
                                 <SelectValue placeholder="Tags"></SelectValue>
                             </SelectTrigger>
                             <SelectContent  >
-                            { tags.map((a)=><SelectItem style={{color:"#e3e3e3"}} key={a} value={a}>{a}</SelectItem>) }
+                            { tags.map((a)=><SelectItem style={{color:""}} key={a} value={a}>{a}</SelectItem>) }
                             </SelectContent>
                          </Select>
                          
@@ -143,11 +144,11 @@ export default function CreateProjectForm() {
                     <FormMessage/>
                 </FormItem>}
                 />
-                <DialogClose style={{color:"#e3e3e3"}}>
+                <DialogClose style={{color:"#e3e3e3"}} className="border-none">
                     {false? <div><p>You can create only 3 projects with free plan, 
                         please upgrade your plan</p></div>:<Button style={{backgroundColor:"#454545", color:"#e3e3e3"}} variant="" type="submit" className="w-full my-5">
                             Create Project</Button>}
-                </DialogClose>
+                </DialogClose >
             </form>
         </Form>
     </div>

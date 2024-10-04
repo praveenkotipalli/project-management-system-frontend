@@ -14,14 +14,14 @@ import Subscription from './pages/Subscription/Subscription.jsx'
 // import Signup from './pages/Auth/Signup'
 import Auth from './pages/Auth/Auth'
 // import Login from './pages/Auth/Login'
-import LandingPage from "../src/pages/custom/LandingPage"
+// import LandingPage from "../src/pages/custom/LandingPage"
 function App() {
 
   return (
     <>  
       <CustomCursor/>
       {
-        true?
+      true?
         <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/project/:id" element={<ProjectDetails/>}/>

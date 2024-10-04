@@ -4,7 +4,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Tiny5&family=Unbounded:wght@200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
+/* .upgradeButton{
+  background-color: #DDFF00;
+  color: #0D0D0D;
+  border:#DDFF00;
 
+box-shadow: 0px 5px 14px #ddff005b;
+} */
+.upgradeButton{
+  background-color: #ddff00;
+  color: #0D0D0D;
+}
+
+.upgradeButton:hover{
+  box-shadow: 3px 4px 5px #0D0D0D;
+  
+}
 .navbar {
   background: rgba(255, 255, 255, 0.177); /* Semi-transparent background */
   backdrop-filter: blur(10px); /* Apply blur effect */
@@ -27,19 +42,56 @@
 
 .navbar:hover {
   background: hsla(0, 0%, 100%, 0.242); /* Darker on hover for effect */
+  
 }
 
 .dialogContent {
   background-color: rgba(23, 23, 23, 0.9); /* Semi-transparent background for dialog */
   backdrop-filter: blur(10px); /* Blur effect for dialog */
 }
-
+.inviteButton:hover{
+  color: #854DFC;
+  border: none;
+}
+.customTextColor{
+  background: linear-gradient(to bottom, #FFFFF7, #727267);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .navLogo{
   margin-left: 25px;
   font-family: Tiny5;
   font-size: x-large;
   cursor: pointer;
+  /* color: hsl(60, 5%, 43%); */
+  background: linear-gradient(to bottom, #FFFFF7, #727267);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* background: linear-gradient(145deg, hsl(0, 0%, 18%), hsl(0, 0%, 12%)); */
   /* color: #171717f4; */
+}
+.upgrade-container {
+  /* position: fixed; */
+  width: 100vw;
+  height: 95vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Make sure it's behind the custom cursor */
+}
+
+.spline1-container {
+  /* position: fixed; */
+  width: 100vw;
+  height: 108vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; /* Make sure it's behind the custom cursor */
 }
 
 .spline-container {
@@ -82,7 +134,7 @@
 
 .navLogo:hover{
   background-color: none;
-  color: #e3e3e3;
+  /* color: #0D0D0D; */
 }
 
 .navBarBorder{
@@ -113,25 +165,14 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #141414;
+  background-color: #0D0D0D;
   position: relative;
   overflow: hidden;
+  /* color: #ddff0053; */
 }
 
 /* Black Border and Gradient Blur Background with Fluid Motion */
-body::before {
-  content: '';
-  position: absolute;
-  top: 10px; /* Offset by 10px */
-  left: 10px; /* Offset by 10px */
-  right: 10px; /* Offset by 10px */
-  bottom: 10px; /* Offset by 10px */
-  background: linear-gradient(135deg, #366585, #2a3f4d, #112f38, #000000, #4d3658, #366585);
-  filter: blur(80px);
-  z-index: -2;
-  animation: fluidBackground 15s ease-in-out infinite; /* Reduced from 30s to 15s for faster motion */
-  background-size: 200% 200%; /* Increase size to allow the fluid movement */
-}
+
 
 /* Animate background to move in fluid-like motion */
 @keyframes fluidBackground {
@@ -147,28 +188,11 @@ body::before {
 }
 
 /* Noise Effect Layer */
-body::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, transparent 2%),
-              radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, transparent 2%);
-  background-size: 60px 60px;
-  opacity: 0.075;
-  z-index: -3;
 
-  /* Noise Layer */
-  background-image: url('https://www.transparenttextures.com/patterns/noise.png'); /* Add noise texture */
-  opacity: 0.08; /* Adjust opacity for noise */
-  pointer-events: none;
-}
 
 /* Optional: Set body background color for contrast */
 body {
-  background-color: #000; /* Set a dark background for the body */
+  background-color: #0D0D0D; /* Set a dark background for the body */
 }
 
 
@@ -213,7 +237,8 @@ button:focus-visible {
     /* color: #6dbfdd; */
     background-color: #fafafa;
     /* color: hsla(0, 0%, 38%, 0.61) */
-    /* color: #454545; */
+    color: #454545;
+    color: hsl(0, 0%, 12%);
   }
 }
 
@@ -222,6 +247,27 @@ button:focus-visible {
 @tailwind components;
 @tailwind utilities;
 
+.customCard {
+  background: linear-gradient(145deg, hsl(0, 0%, 18%), hsl(0, 0%, 12%));
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #262626;
+}
+
+.customChatCard {
+  background: linear-gradient(145deg, hsl(0, 0%, 18%), hsl(0, 0%, 12%));
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #262626;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chatType:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
 
 
 @layer base {
