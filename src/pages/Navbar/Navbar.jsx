@@ -4,6 +4,8 @@ import CreateProjectForm from "../Project/CreateProjectForm";
 import { PersonIcon } from "@radix-ui/react-icons";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { useNavigate } from "react-router-dom";
+import ShimmerButton from "@/components/ui/shimmer-button";
+import ShinyButton from "@/components/ui/shiny-button";
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -14,7 +16,7 @@ export default function Navbar() {
                 <p onClick={() => navigate("/")} className="navLogo target-container" >Unsplash</p>
                 <Dialog  >
                     <DialogTrigger className="border-none">
-                        <Button className="textCustom target-container border-none" variant="ghost">New Project</Button>
+                        <ShimmerButton  className="text-gray-400 target-container border-none " variant="ghost">New Project</ShimmerButton>
                     </DialogTrigger>
                     <DialogContent style={{backgroundColor:"#3c3c3c63", border:"none"}} className="dialogContent">
                         <DialogHeader style={{color:"#e3e3e3"}}>
@@ -41,7 +43,7 @@ boxShadow: "0px 5px 14px #ddff005b"
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        <DropdownMenuItem>Logout</DropdownMenuItem>
+                        <DropdownMenuItem><p className="gooey-button">Logout</p></DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
                 <p>PraveenInc</p>

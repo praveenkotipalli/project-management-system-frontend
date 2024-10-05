@@ -29,7 +29,7 @@ function App() {
         <Route path="/upgrade" element={<Subscription/>}/>
         <Route path="auth" element={<Auth/>}/>
         {/* <Route path="/signup" element={<Signup/>}/> */}
-        <Route path="https://project-management-system-frontend-livid.vercel.app/*" element={<PageNotFound/>}/>
+        <Route path="*" element={<PageNotFound/>}/>
       </Routes>:
       <Auth/>
       // <Routes>

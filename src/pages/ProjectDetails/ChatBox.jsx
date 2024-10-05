@@ -1,5 +1,6 @@
 /* eslint-disable no-constant-condition */
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { BorderBeam } from "@/components/ui/border-beam";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 // import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
@@ -63,6 +64,7 @@ export default function ChatBox() {
             </Button>
           </div>
         </div>
+        <BorderBeam size={250} duration={12} delay={9} />
     </div>
   );
 }
