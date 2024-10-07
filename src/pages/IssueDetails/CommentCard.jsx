@@ -4,7 +4,7 @@ import { TrashIcon } from "@radix-ui/react-icons";
 
 export default function CommentCard() {
   return (
-    <div className="flex items-center gap-4">
+    <div style={{zIndex:"3"}} className="flex items-center gap-4">
         <div className="flex items-center gap-4">
             <Avatar>
                 <AvatarFallback>S</AvatarFallback>

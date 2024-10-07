@@ -26,13 +26,13 @@ export default function CreateCommentForm() {
                     name="comment"
 
                     render={({field})=>
-                        <FormItem>
+                        <FormItem style={{zIndex:"3"}}>
                             <div className="flex gap-3">
                             <Avatar className="mt-5">
                                 <AvatarFallback >S</AvatarFallback>
                             </Avatar>
                             <div>
-                            <FormLabel ><p style={{textAlign:"right",marginBottom:"4px",marginLeft:"2px"}}>Comment</p></FormLabel>
+                            <FormLabel ><p style={{color:"#e3e3e3", textAlign:"right",marginBottom:"4px",marginLeft:"2px"}}>Comment</p></FormLabel>
                             <FormControl>
                                 <Input {...field} type="text" className="border w-full border-gray-700 py-5 px-4 mr-12 ml-2   pr-44" placeholer="Project name...."/>
                             </FormControl>

@@ -7,6 +7,8 @@ import CommentCard from "./CommentCard";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { MagicCard } from "@/components/ui/magic-card";
+import Spidey from "../custom/Spidey";
 
 export default function IssueDetails() {
   const {projectId, issueId} = useParams();
@@ -17,8 +19,9 @@ export default function IssueDetails() {
     <>
     
     <Navbar/>
+    
     <div className="px-20  py-10 text-gray-200">
-      <div className="flex justify-between border  p-10 rounded-lg">
+      <MagicCard style={{zIndex:"3"}} className="flex justify-between border  p-10 rounded-lg">
         <ScrollArea className="h-[70vh] w-[60%]">
           <div>
             <h1 className="text-lg font-semibold text-gray-100">Create navbar</h1>
@@ -51,8 +54,11 @@ export default function IssueDetails() {
             </div>
           </div>
         </ScrollArea>
+        <div className="h-screen w-screen" style={{zIndex:"-1", position:"absolute", border:"", bottom:"200px", height:"500px", padding:"90px"}}>
+          <Spidey/>
+        </div>
 
-        <div className="w-full pr-10 ml-60 lg:w-[30%] space-y-2">
+        <div style={{border:"", position:"absolute", bottom:"100px", left:"650px", paddingLeft:'10px'}} className="w-full pr-10 ml-60 lg:w-[30%] space-y-2">
         <Select onValueChange={handleUpdateIssueStatus}>
   <SelectTrigger className="w-[180px]">
     <SelectValue placeholder="To Do" />
@@ -117,7 +123,7 @@ export default function IssueDetails() {
 
 
         </div>
-      </div>
+      </MagicCard>
      
     </div>
     </>

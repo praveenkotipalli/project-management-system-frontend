@@ -20,7 +20,7 @@ export default function ProjectDetails() {
     <>
     
     <Navbar/>
-      <div className="mt-5 lg:px-10">
+      <div className="mt-5 lg:px-10" style={{border:""}}>
       <Particles
         className="absolute inset-0 z-[-1]"
         quantity={100}
@@ -28,9 +28,9 @@ export default function ProjectDetails() {
         
         refresh
       />
-        <div className="lg:flex  gap-5 justify-between pb-4">
-          <ScrollArea className="h-[89vh]  lg:w-[69%] pr-2 ">
-            <div className=" p w-full pr-8 pl-8 "  style={{paddingRight:"8px", paddingLeft:"8px"}} >
+        <div className="lg:flex  gap-5 justify-between pb-4" style={{border:""}}>
+          <ScrollArea className="h-[89vh]  lg:w-[69%] pr-2 " style={{border:""}}>
+            <div className=" p w-full h-[900px] pr-8 pl-8 "  style={{paddingRight:"8px", paddingLeft:"8px", border:""}} >
               <h1 className="text-lg font-bold pb-5 pt-3 customTextColor  "  >Create Ecommerce Website Using React</h1>
               <div className="space-y-5 pb-10 ">
               <p className="w-full  text-gray-400 text-sm" style={{color:"#797A76"}}>
@@ -75,11 +75,15 @@ export default function ProjectDetails() {
               <div className="flex">
                 <p style={{color:"#854DFC"}} className="w-36">Status :</p>
                 <Badge style={{background:"gray"}}><p>Pending</p></Badge>
-
               </div>
+              <div className="" style={{border:"", width:"350px", marginLeft:"600px", position:"relative", bottom:"210px"}}>
+                <img src="/projectDetails.png" title="Me and who?!" style={{marginBottom:"1px"}}/>
+          </div>
+
+              
             </div>
 
-            <section>
+            <section style={{border:"", position:"relative",bottom:"380px"}}>
               <p style={{color:"#e3e3e3"}} className="tasksFont py-5 border-b text-lg -tracking-wider ">Tasks</p>
               <div className="lg:flex md:flex gap-3 justify-between py-5  ">
                 <IssueList status="pending" title="Todo List"/>
