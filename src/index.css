@@ -106,6 +106,23 @@ box-shadow: 0px 5px 14px #ddff005b;
   align-items: center;
   z-index: 1; /* Make sure it's behind the custom cursor */
 }
+
+.issueSPline-container {
+  position: absolute;
+  width: 200vw; /* Adjust to control the width of the rectangular box */
+  height: 200px; /* Height of the box */
+  top: 55%; /* Position it in the middle vertically */
+  left: 50%; /* Position it in the middle horizontally */
+  transform: translate(-50%, -50%); /* Centers the box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0; /* Behind the custom cursor or content */
+  /* background: rgba(255, 255, 255, 0.1); Optional background color */
+  border-radius: 10px; /* Optional: Adds rounded corners */
+}
+
+
 .tasksFont{
   font-family: Unbounded;
   font-size: 20px;

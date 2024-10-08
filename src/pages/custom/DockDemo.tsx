@@ -10,10 +10,10 @@ export function DockDemo() {
     <div className="relative " style={{border:"1px solid red", bottom:"25px"}}>
       <Dock direction="middle">
         <DockIcon>
-          <Icons.gitHub className="size-6" />
+          <a href="https://github.com/praveenkotipalli/"><Icons.gitHub className="size-6" /></a>
         </DockIcon>
         <DockIcon>
-          <Icons.linkedin className="size-6" />
+         <a href="https://www.linkedin.com/in/praveen-kumar-kotipalli-5b0ba528a/"><Icons.linkedin className="size-6" /></a> 
         </DockIcon>
         <DockIcon>
           <Icons.gmail className="size-6" />

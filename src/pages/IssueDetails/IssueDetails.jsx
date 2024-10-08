@@ -9,6 +9,9 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { MagicCard } from "@/components/ui/magic-card";
 import Spidey from "../custom/Spidey";
+import IssueDetailsBg from "../custom/IssueDetailsBg";
+
+
 
 export default function IssueDetails() {
   const {projectId, issueId} = useParams();
@@ -21,10 +24,12 @@ export default function IssueDetails() {
     <Navbar/>
     
     <div className="px-20  py-10 text-gray-200">
+      <IssueDetailsBg/>
+      {/* <IssueDetailsBg/> */}
       <MagicCard style={{zIndex:"3"}} className="flex justify-between border  p-10 rounded-lg">
         <ScrollArea className="h-[70vh] w-[60%]">
           <div>
-            <h1 className="text-lg font-semibold text-gray-100">Create navbar</h1>
+            <h1 style={{}} className="text-lg font-semibold text-gray-100">Create navbar</h1>
             <div className="py-5">
               <h2 className="font-semibold text-gray-200 ">
                 Description
@@ -37,7 +42,7 @@ export default function IssueDetails() {
             <div className="mt-5">
               <h1 className="pb-3">Activity</h1>
               <Tabs defaultValue="comments"  className="w-[400px]">
-                <TabsList className="mb-5" >
+                <TabsList  className="mb-5" >
                   <TabsTrigger  value="all">All</TabsTrigger>
                   <TabsTrigger value="comments">Comments</TabsTrigger>
                   <TabsTrigger value="history">History</TabsTrigger>
@@ -58,19 +63,21 @@ export default function IssueDetails() {
           <Spidey/>
         </div>
 
-        <div style={{border:"", position:"absolute", bottom:"100px", left:"650px", paddingLeft:'10px'}} className="w-full pr-10 ml-60 lg:w-[30%] space-y-2">
-        <Select onValueChange={handleUpdateIssueStatus}>
-  <SelectTrigger className="w-[180px]">
+        <div style={{border:"", zIndex:"", position:"absolute", bottom:"100px", left:"650px", paddingLeft:'10px'}} className="w-full pr-10 ml-60 lg:w-[30%] space-y-2">
+        <div style={{zIndex:""}}>
+        <Select  onValueChange={handleUpdateIssueStatus}>
+  <SelectTrigger style={{zIndex:"2"}} className="w-[180px]">
     <SelectValue placeholder="To Do" />
   </SelectTrigger>
-  <SelectContent>
+  <SelectContent style={{zIndex:"999"}}>
     <SelectItem value="pending">To Do</SelectItem>
     <SelectItem value="in-progress">In Progress</SelectItem>
     <SelectItem value="done">Done</SelectItem>
   </SelectContent>
 </Select>
+        </div>
 
-<div className="border rounded-lg w-[25rem]">
+<div style={{zIndex:"-2"}} className="border rounded-lg w-[25rem]">
   <p className="border-b py-3 px-5">Details</p>
   <div className="p-5">
     <div className="space-y-7">
