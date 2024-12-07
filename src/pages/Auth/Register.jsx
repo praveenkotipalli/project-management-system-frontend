@@ -2,8 +2,14 @@ import  { useState, useRef, useEffect } from 'react';
 import './Register.css'; // Import your CSS file
 // import { Link } from 'react-router-dom';
 import BimoSpline from "../custom/BimoSpline"
+import { useDispatch } from 'react-redux';
+import { register } from '@/Redux/Auth/Action';
 
 const Register = () => {
+
+  const dispatch = useDispatch();
+
+  
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,6 +46,7 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+   
 
     // Implement your registration logic here (e.g., API call)
     console.log([username,password,email]);
@@ -47,6 +54,19 @@ const Register = () => {
     setPassword("");
     setEmail("");
 
+    dispatch(
+    register({
+        fullname: username, // Replace with the variable holding the fullname
+        email: email,       // Replace with the variable holding the email
+        password: password, // Replace with the variable holding the password
+    }).then(() => {
+      // Assuming dispatch returns a promise or has success state
+      alert('Sign-up successful!'); // Pop-up message on successful registration
+    })
+
+
+    
+  );
     // Handle successful or failed registration (e.g., reset forms, show errors)
   };
 

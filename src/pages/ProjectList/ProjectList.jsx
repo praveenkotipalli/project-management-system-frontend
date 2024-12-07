@@ -8,31 +8,57 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {  GitHubLogoIcon, InstagramLogoIcon, LinkedInLogoIcon, MagnifyingGlassIcon, MixerHorizontalIcon } from "@radix-ui/react-icons";
 import {  Link } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectCard from "../Project/ProjectCard";
 import SplineRocket from "../custom/SplineRocket.jsx"
 // import Globe from "@/components/ui/globe";
 import { GlobeDemo } from "../custom/GlobeDemo";
 import Particles from "@/components/ui/particles";
+import { useDispatch, useSelector } from "react-redux";
+import { store } from "@/Redux/Store";
+import { fetchProjects, searchProjects } from "@/Redux/Project/Action";
 // import { relative } from "path";
 // import { Link } from "lucide-react";
 // import { Link } from "lucide-react";
 
 export const tags = [
-  "All", "React", "Next js", "Spring boot", "MySql", "Node js", "Express js", "Python", "Flask", "Django", 
+  "all", "react", "next js", "spring boot", "my sql", "node js", "express js", "python", "flask", "django", "javasscript"
 ];
 
 export default function ProjectList() {
 
   const [keyword, setKeyword] = useState("");
 
+  const {project} = useSelector(store=>store);
 
-  const handleFilterChange = (section,value) =>{
-    console.log("value", value, section);
+  const dispatch = useDispatch();
+
+  const handleFilterTags = (value) =>{
+    if(value === "all") {
+      dispatch(fetchProjects({}))
+    }else{
+    dispatch(fetchProjects({tag:value}))
+    }
+    // console.log("value", value, section);
   }
+
+  const handleFilterCategory = (value) =>{
+    if(value === "all") {
+      dispatch(fetchProjects({}))
+    }else{
+      dispatch(fetchProjects({category:value}))
+    }
+    // console.log("value", value, section);
+  }
+
+  // useEffect(() => {
+  //   dispatch(fetchProjects({}))
+    
+  // }, [])
 
   const handleSearchChange = (e) => {
     setKeyword(e.target.value);
+    dispatch(searchProjects(e.target.value));
   }
   return (
     <>
@@ -59,7 +85,7 @@ export default function ProjectList() {
                   Category
                 </h1>
                 <div className="pt-5"  >
-                  <RadioGroup  className="space-y-3 pt-5"defaultValue="all" onValueChange={(value)=>handleFilterChange("category", value)} >
+                  <RadioGroup  className="space-y-3 pt-5"defaultValue="all" onValueChange={(value)=>handleFilterCategory( value)} >
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="all" id="r1" style={{border:"1px solid #854DFC", color:"#854DFC"}} />
                       <Label htmlFor="r1" style={{color:"#854DFC"}} >All</Label>
@@ -85,7 +111,7 @@ export default function ProjectList() {
                   Tags
                 </h1>
                 <div className="pt-5">
-                  <RadioGroup className="space-y-3 pt-5" defaultValue="all" onValueChange={(value)=>handleFilterChange("tag", value)} >
+                  <RadioGroup className="space-y-3 pt-5" defaultValue="all" onValueChange={(value)=>handleFilterTags(value)} >
                     {tags.map((item) => <div key={item} className="flex items-center gap-2 " >
                       <RadioGroupItem  value={item} id={`r1-${item}`} style={{border:"1px solid #854DFC", color:"#854DFC"}} />
                       <Label htmlFor={`r1-${item}`} style={{ color:"#854DFC"}} >{item}</Label>
@@ -107,6 +133,7 @@ export default function ProjectList() {
               onChange={handleSearchChange}
               placeholder="search project"
               className="40% px-9 border-none"
+              style={{color:"white", border:"1px solid grey"}}
             />
             <MagnifyingGlassIcon className="absolute top-3 left-4" style={{color:"#e3e3e3"}} />
           </div>
@@ -116,8 +143,8 @@ export default function ProjectList() {
           <div className="space-y-5 min-h-[74vh]" >
               {
                  
-                  keyword?[1,1,1].map((item)=><ProjectCard key={item}/>):
-                  [1,1,1,1,1,1,1].map((item)=><ProjectCard key={item}/>)
+                  keyword?project.searchProjects?.map((item,index)=><ProjectCard key={item.id*index} item={item}/>):
+                  project.projects?.map((item)=><ProjectCard key={item.id} item={item}/>)
                 
               }
           </div>

@@ -3,9 +3,13 @@
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input"; // Correct input import
+// import { register } from "@/Redux/Auth/Action";
 import { useForm } from "react-hook-form";
+// import { useDispatch } from "react-redux";
 
 export default function Signup() {
+    // const dispatch = useDispatch();
+
     const form = useForm({
         defaultValues: {
             email: "",
@@ -15,7 +19,9 @@ export default function Signup() {
     });
 
     const onSubmit = (data) => {
+        
         console.log("signup details -->", data);
+        // dispatch(register(data))
     };
 
     return (
@@ -38,9 +44,10 @@ export default function Signup() {
                                             </FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    {...field}
+                                                    
                                                     type="email"
                                                     className="border w-full border-gray-700 py-5 px-4 mr-12 ml-2 pr-44"
+                                                    {...field}
                                                    
                                                 />
                                             </FormControl>
@@ -55,7 +62,7 @@ export default function Signup() {
                         />
                         <FormField
                             control={form.control}
-                            name="email"
+                            name="password"
                             render={({ field }) => (
                                 <FormItem>
                                     <div className="flex gap-3">
@@ -67,9 +74,10 @@ export default function Signup() {
                                             </FormLabel>
                                             <FormControl>
                                                 <Input
-                                                    {...field}
-                                                    type="email"
+                                                    
+                                                    type="password"
                                                     className="border w-full border-gray-700 py-5 px-4 mr-12 ml-2 pr-44"
+                                                    {...field}
                                                    
                                                 />
                                             </FormControl>

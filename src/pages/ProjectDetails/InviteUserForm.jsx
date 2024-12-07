@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { DialogClose } from "@/components/ui/dialog";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useDispatch } from "react-redux";
+import { inviteToProject } from "@/Redux/Project/Action";
+import { useParams } from "react-router-dom";
 // import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 // import { Input } from "postcss";
 // import { useForm } from "react-hook-form";
@@ -10,12 +13,18 @@ import { Input } from "@/components/ui/input";
 // import { Cross1Icon } from "@radix-ui/react-icons";
 
 export default function InviteUserForm() {
+
+    const dispatch = useDispatch();
+
+    const {id} = useParams();
+    
     const form = useForm({
         defaultValues:{
             email:"",
         },
     });
     const onSubmit = (data) =>{
+        dispatch(inviteToProject({email: data.email, projectId: id}))
         console.log("invited user mail", data);
     }
   return (

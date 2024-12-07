@@ -10,12 +10,26 @@ import IssueList from "./IssueList";
 import ChatBox from "./ChatBox";
 import Navbar from "../Navbar/Navbar";
 import Particles from "@/components/ui/particles";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchProjectById } from "@/Redux/Project/Action";
+import { store } from "@/Redux/Store";
 
 export default function ProjectDetails() {
+  const dispatch = useDispatch();
+  const {project} = useSelector(store=>store);
+  // console.log("project details", project);
+  const {id} = useParams();
 
   const handleProjectInvitation = () =>{
 
   }
+
+  useEffect(() =>{
+    dispatch(fetchProjectById(id));
+    // console.log("project details", id);
+  }, [id])
   return (
     <>
     
@@ -31,26 +45,30 @@ export default function ProjectDetails() {
         <div className="lg:flex  gap-5 justify-between pb-4" style={{border:""}}>
           <ScrollArea className="h-[89vh]  lg:w-[69%] pr-2 " style={{border:""}}>
             <div className=" p w-full h-[900px] pr-8 pl-8 "  style={{paddingRight:"8px", paddingLeft:"8px", border:""}} >
-              <h1 className="text-lg font-bold pb-5 pt-3 customTextColor  "  >Create Ecommerce Website Using React</h1>
+              <h1 className="text-lg font-bold pb-5 pt-3 customTextColor  "  >{project.projectDetails?.name &&
+  project.projectDetails.name.charAt(0).toUpperCase() + project.projectDetails.name.slice(1)}</h1>
               <div className="space-y-5 pb-10 ">
               <p className="w-full  text-gray-400 text-sm" style={{color:"#797A76"}}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Consectetur modi expedita eligendi voluptatem libero dolores odio omnis saepe aut, 
-                sint architecto, officia eveniet consequatur aliquam, illum officiis! Tenetur, 
-                exercitationem tempora.
+              {project.projectDetails?.description &&
+  project.projectDetails.description.charAt(0).toUpperCase() + project.projectDetails.description.slice(1)}
               </p>
               <div style={{color:"#e3e3e3"}} className="flex">
                 <p className="w-36" style={{color:"#854DFC"}}>Project Lead :</p>
-                <p className="customTextColor">Praveen</p>
+                <p className="customTextColor">{project.projectDetails?.owner.fullname &&
+  project.projectDetails.owner.fullname.charAt(0).toUpperCase() + project.projectDetails.owner.fullname.slice(1)}
+</p>
 
               </div>
               <div  className="flex">
                 <p style={{color:"#854DFC"}} className="w-36">Members :</p>
                 <div className="flex items-center gap-2">
-                  {[1, 1].map((item)=> <Avatar key={item} className="cursor-pointer">
-                  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                    <AvatarFallback>S</AvatarFallback>
-                  </Avatar>)}
+                  {project.projectDetails?.team.map((item)=> <Avatar key={item} className="cursor-pointer">
+                  {/* <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" /> */}
+                    <AvatarFallback>
+                      {item.fullname[0].toUpperCase()}
+                      </AvatarFallback>
+                  </Avatar>
+                )}
                 </div>
                 <Dialog>
                   <DialogTrigger style={{marginLeft:"35px"}}>
@@ -69,7 +87,9 @@ export default function ProjectDetails() {
               </div>
               <div style={{color:"#e3e3e3"}} className="flex">
                 <p className="w-36" style={{color:"#854DFC"}}>Category :</p>
-                <p className="customTextColor">Fullstack</p>
+                <p className="customTextColor">{project.projectDetails?.category &&
+  project.projectDetails.category.charAt(0).toUpperCase() + project.projectDetails.category.slice(1)}
+</p>
 
               </div>
               <div className="flex">

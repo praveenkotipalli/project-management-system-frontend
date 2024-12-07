@@ -6,15 +6,23 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { DotsVerticalIcon, PersonIcon } from "@radix-ui/react-icons";
 import UserList from "./UserList";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteIssue } from "@/Redux/Issue/Action";
+// import { deleteProject } from "@/Redux/Project/Action";
 
-export default function IssueCard() {
+export default function IssueCard({item}) {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const handleDelete = () =>{
+    dispatch(deleteIssue(item.id))
+  }
   return (
     <Card className="rounded-md py-1 pb-2 mt-5 ">
       <CardHeader className="py-0 pb-1">
         <div className="flex justify-between items-center">
-          <CardTitle className="cursor-pointer" onClick={()=>navigate("issue/3")}>
-            Create Navbar
+          <CardTitle className="cursor-pointer" onClick={()=>navigate("issue/"+item.id)}>
+            {item.title}
           </CardTitle>
           <DropdownMenu className="border-none">
             <DropdownMenuTrigger className="border-none">
@@ -26,14 +34,14 @@ export default function IssueCard() {
               <DropdownMenuItem>In Progress</DropdownMenuItem>
               <DropdownMenuItem>Done</DropdownMenuItem>
               <DropdownMenuItem>Edit</DropdownMenuItem>
-              <DropdownMenuItem>Delete</DropdownMenuItem>
+              <DropdownMenuItem onClick={handleDelete}>Delete</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
       </CardHeader>
       <CardContent className="mt-3">
         <div className="flex items-center justify-between">
-          <p>FBP - {1}</p>
+          <p>{item.description}</p>
           <DropdownMenu className="w-[30rem] border-none ">
             <DropdownMenuTrigger className="border-none">
             <Button size="icon" variant="ghost" className="border-none bg-gray-900 hover:text-black text-white rounded-full">
@@ -45,7 +53,7 @@ export default function IssueCard() {
             </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent >
-              <UserList/>
+              <UserList issueDetails={item}/>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

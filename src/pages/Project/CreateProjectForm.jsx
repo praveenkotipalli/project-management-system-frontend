@@ -7,11 +7,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useForm } from "react-hook-form";
 import { tags } from "../ProjectList/ProjectList";
 import { Cross1Icon } from "@radix-ui/react-icons";
+import { useDispatch } from "react-redux";
+import { createProject } from "@/Redux/Project/Action";
 // import { useState } from "react";
 // import { z } from "zod";
 
 export default function CreateProjectForm() {
     // const [tagsVal, setTagsVal] = useState([]);
+    const dispatch = useDispatch();
     const form = useForm({
         defaultValues:{
             name:"",
@@ -30,6 +33,7 @@ export default function CreateProjectForm() {
 
     const onSubmit = (data) =>{
         // data.preventDefault();
+        dispatch(createProject(data));
         console.log("create project data", data);
     }
 

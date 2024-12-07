@@ -8,40 +8,56 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { MagicCard } from "@/components/ui/magic-card";
-import Spidey from "../custom/Spidey";
-import IssueDetailsBg from "../custom/IssueDetailsBg";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchIssueById, updateIssueStatus } from "@/Redux/Issue/Action";
+import { store } from "@/Redux/Store";
+import { fetchComments } from "@/Redux/Comment/Action";
+// import { store } from "@/Redux/Store";
+// import Spidey from "../custom/Spidey";
+// import IssueDetailsBg from "../custom/IssueDetailsBg";
 
 
 
 export default function IssueDetails() {
   const {projectId, issueId} = useParams();
   const handleUpdateIssueStatus = (status) =>{
+    dispatch(updateIssueStatus({status, id: issueId}));
     console.log("updated isssue data ->", status);
   }
+  const dispatch = useDispatch();
+
+  // const {id} = useParams();
+  const {issue, comment} = useSelector(store=>store);
+
+  useEffect(()=>{
+    dispatch(fetchIssueById(issueId));
+    dispatch(fetchComments(issueId));
+  },[issueId])
+
   return (
     <>
     
     <Navbar/>
     
     <div className="px-20  py-10 text-gray-200">
-      <IssueDetailsBg/>
+      {/* <IssueDetailsBg/> */}
       {/* <IssueDetailsBg/> */}
       <MagicCard style={{zIndex:"3"}} className="flex justify-between border  p-10 rounded-lg">
         <ScrollArea className="h-[70vh] w-[60%]">
           <div>
-            <h1 style={{}} className="text-lg font-semibold text-gray-100">Create navbar</h1>
+            <h1 style={{}} className="text-lg font-semibold text-gray-100">{issue.issueDetails?.title ? issue.issueDetails.title.charAt(0).toUpperCase() + issue.issueDetails.title.slice(1) : "Loading..."}</h1>
             <div className="py-5">
-              <h2 className="font-semibold text-gray-200 ">
+              <h2 className="font-bold text-gray-200 ">
                 Description
               </h2>
               <p className=" text-gray-300 text-sm mt-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Explicabo distinctio eaque soluta ipsum omnis.
+              {issue.issueDetails?.title ? issue.issueDetails.description.charAt(0).toUpperCase() + issue.issueDetails.description.slice(1) : "Loading..."}  
               </p>
             </div>
-            <div className="mt-5">
+            <div className="mt-5 " style={{minWidth:"700px"}}>
               <h1 className="pb-3">Activity</h1>
-              <Tabs defaultValue="comments"  className="w-[400px]">
+              <Tabs defaultValue="comments"  className="w-[400px]" >
                 <TabsList  className="mb-5" >
                   <TabsTrigger  value="all">All</TabsTrigger>
                   <TabsTrigger value="comments">Comments</TabsTrigger>
@@ -49,9 +65,9 @@ export default function IssueDetails() {
                 </TabsList>
                 <TabsContent value="all">all section of the activity</TabsContent>
                 <TabsContent value="comments">
-                  <CreateCommentForm />
+                  <CreateCommentForm  issueId={issueId}/>
                   <div className="mt-8 space-y-6">
-                    {[1,1,1,1,1,1,1].map((item)=><CommentCard key={item}/>)}
+                    {comment.comments.map((item)=><CommentCard item={item} key={item}/>)}
                   </div>  
                 </TabsContent>
                 <TabsContent value="history">no history</TabsContent>
@@ -59,9 +75,9 @@ export default function IssueDetails() {
             </div>
           </div>
         </ScrollArea>
-        <div className="h-screen w-screen" style={{zIndex:"-1", position:"absolute", border:"", bottom:"200px", height:"500px", padding:"90px"}}>
+        {/* <div className="h-screen w-screen" style={{zIndex:"-1", position:"absolute", border:"", bottom:"200px", height:"500px", padding:"90px"}}>
           <Spidey/>
-        </div>
+        </div> */}
 
         <div style={{border:"", zIndex:"", position:"absolute", bottom:"100px", left:"650px", paddingLeft:'10px'}} className="w-full pr-10 ml-60 lg:w-[30%] space-y-2">
         <div style={{zIndex:""}}>
@@ -84,14 +100,14 @@ export default function IssueDetails() {
 
       <div className="flex gap-10 items-center">
         <p className="w-[7rem]">Assignee</p>
-        <div className="flex items-center gap-3">
+        {issue.issueDetails?.assignee?.fullname ? <div className="flex items-center gap-3">
           <Avatar className="h-8 w-8 text-xs">
-            <AvatarFallback>
-              P
+            <AvatarFallback style={{color:"black", fontSize:"bold"}}>
+              {issue.issueDetails?.assignee?.fullname[0].toUpperCase()}
             </AvatarFallback>
           </Avatar>
-          <p>Praveen</p>
-        </div>
+          <p>{issue.issueDetails?.assignee?.fullname}</p>
+        </div> : <p>unassigned</p>}
       </div>
 
       <div className="flex gap-10 items-center">
@@ -102,7 +118,7 @@ export default function IssueDetails() {
       <div className="flex gap-10 items-center">
         <p className="w-[7rem]">Status</p>
         <Badge>
-          In Progress
+          {issue.issueDetails?.status }
         </Badge>
       </div>
 

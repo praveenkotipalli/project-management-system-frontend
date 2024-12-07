@@ -6,10 +6,19 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuIte
 import { useNavigate } from "react-router-dom";
 import ShimmerButton from "@/components/ui/shimmer-button";
 import ShinyButton from "@/components/ui/shiny-button";
+import { useDispatch, useSelector } from "react-redux";
+import { store } from "@/Redux/Store";
+import { logout } from "@/Redux/Auth/Action";
 
 export default function Navbar() {
     const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+    const {auth} = useSelector(store => store);
+
+    const handleLogout = () => {
+       dispatch(logout());
+    }
     return (
         <div className="navbar w-screen">
             <div className="flex items-center gap-3">
@@ -43,10 +52,10 @@ boxShadow: "0px 5px 14px #ddff005b"
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        <DropdownMenuItem><p className="gooey-button">Logout</p></DropdownMenuItem>
+                        <DropdownMenuItem><p className="gooey-button" onClick={handleLogout}>Logout</p></DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
-                <p>PraveenInc</p>
+                <p>{auth.user?.fullname}</p>
             </div>
         </div>
     );

@@ -3,9 +3,13 @@ import { Button } from "@/components/ui/button";
 // import { DialogClose } from "@/components/ui/dialog";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { createComment } from "@/Redux/Comment/Action";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 
-export default function CreateCommentForm() {
+export default function CreateCommentForm({issueId}) {
+
+    const dispatch = useDispatch();
     const form = useForm({
         defaultValues:{
             comment:"",
@@ -13,6 +17,8 @@ export default function CreateCommentForm() {
     });
 
     const onSubmit = (data) =>{
+
+        dispatch(createComment({content: data.comment, issueId}));
         console.log("comment -->" , data);
         
     }

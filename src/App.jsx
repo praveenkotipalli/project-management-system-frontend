@@ -13,15 +13,49 @@ import Subscription from './pages/Subscription/Subscription.jsx'
 // import Login from './pages/Auth/Login'
 // import Signup from './pages/Auth/Signup'
 import Auth from './pages/Auth/Auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getUser } from './Redux/Auth/Action'
+import { store } from './Redux/Store'
+import { fetchProjects } from './Redux/Project/Action'
+// import { store } from './Redux/Store'
+// import { useEffect, useState } from 'react'
 // import Login from './pages/Auth/Login'
 // import LandingPage from "../src/pages/custom/LandingPage"
 function App() {
+  const dispatch = useDispatch();
+  const {auth} = useSelector(store => store);
+console.log(auth);
+// if(localStorage.getItem('jwt')){
+//   dispatch(getUser())
+// }
+  useEffect(() => {
+    // if(localStorage.getItem('jwt')){
+    //   dispatch(getUser());
+    // }
+    // if(auth.jwt){
+    dispatch(getUser())
+    dispatch(fetchProjects({}))
+    // }
+  }, [auth.jwt])
+  
+//   const [isAuth, setIsAuth] = useState(false);
+// useEffect(() => {
+//   if(localStorage.getItem('token')){
+//     setIsAuth(true);
+//   }
+// }, [isAuth])
+
+
+  // if(localStorage.getItem('token')){
+  //   setIsAuth(true);
+  // }
 
   return (
     <>  
       <CustomCursor/>
       {
-      true?
+      auth.user?
         <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/project/:id" element={<ProjectDetails/>}/>

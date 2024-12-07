@@ -1,22 +1,46 @@
 import  { useState, useRef, useEffect } from 'react';
 import './Register.css'; // Import your CSS file
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '@/Redux/Auth/Action';
 // import { Link } from 'react-router-dom';
 // import AllWorksCTA from "https://framer.com/m/All-Works-CTA-gpas.js@A9J659vnd2OCgRX0kMlt"
+
+const API_Version = 'http://localhost:5454';
+
+
+
+const fetchPostData = (uri, payload) => {
+  const url = `${API_Version}${uri}`;
+  return axios.post(url, payload).catch((err) => {
+    console.error('Error posting data:', url, 'Error:', err.message);
+    throw err;
+  });
+};
+
+
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  // const [loginError, setLoginError] = useState('');
 
   const eyeRef = useRef(null);
   const beamRef = useRef(null);
 
   const handleUsernameChange = (event) => {
+    event.preventDefault();
     setUsername(event.target.value);
   };
 
   const handleEmailChange = (event) => {
+    event.preventDefault();
     setEmail(event.target.value);
   };
 
@@ -42,10 +66,20 @@ const Login = () => {
     event.preventDefault();
 
     // Implement your registration logic here (e.g., API call)
-    console.log([username,password,email]);
-    setUsername("");
+    console.log([password,email]);
+   
+  
+    // setUsername("");
     setPassword("");
     setEmail("");
+
+    dispatch(
+      login({
+          email: email,       // Replace with the variable holding the email
+          password: password, // Replace with the variable holding the password
+      })
+    ) 
+    // window.location.reload();
 
     // Handle successful or failed registration (e.g., reset forms, show errors)
   };
@@ -84,6 +118,25 @@ const Login = () => {
       };
     }
   }, []);
+
+  // if (!localStorage.getItem('token')) {
+  //   fetchPostData('/auth/signing', { email, password })
+  //     .then((response) => {
+  //       const { jwt } = response.data;
+  //       // setLoginError(''); // Clear any previous login error
+  //       localStorage.setItem('token', jwt); // Store the token in local storage
+  //       // navigate("/");
+  //       window.location.reload();
+  //     })
+  //     .catch((err) => {
+  //       console.error('Login error:', err);
+  //       // setLoginError('An error occurred. Please try again.'); // Set error message
+  //     });
+  // } 
+  // else {
+  //   localStorage.removeItem('token'); // Corrected to remove the token string
+  //   navigate('/login'); // Redirect to the login page
+  // }
 
   return (
     <form onSubmit={handleSubmit} className="register-form login-form">
