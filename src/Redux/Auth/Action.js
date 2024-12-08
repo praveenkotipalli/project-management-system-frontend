@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { GET_USER_REQUEST, GET_USER_SUCCESS, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT, REGISTER_REQUEST, REGISTER_SUCCESS } from "./ActionTypes"
-import { API_BASE_URL } from "@/config/api";
+// import { API_BASE_URL } from "@/config/api";
 // import { type } from "os";
  
 

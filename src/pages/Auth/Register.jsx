@@ -59,9 +59,6 @@ const Register = () => {
         fullname: username, // Replace with the variable holding the fullname
         email: email,       // Replace with the variable holding the email
         password: password, // Replace with the variable holding the password
-    }).then(() => {
-      // Assuming dispatch returns a promise or has success state
-      alert('Sign-up successful!'); // Pop-up message on successful registration
     })
 
 
