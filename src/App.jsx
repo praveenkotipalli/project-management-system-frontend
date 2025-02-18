@@ -55,7 +55,7 @@ console.log(auth);
     <>  
       <CustomCursor/>
       {
-      auth.user?
+      !auth.user?
         <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/project/:id" element={<ProjectDetails/>}/>
